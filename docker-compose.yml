@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MODE: 'localhost'
+      ENVIRONMENT: 'development'
+
+      POSTGRES_USER: 'petru'
+      POSTGRES_PASSWORD: 'admin123'
+      POSTGRES_PORT: '5432'
+      POSTGRES_DATABASE: 'ernie'
+
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    links:
+      - database
+    depends_on:
+      - database
+
+  database:
+    image: postgres
+    environment:
+      - "POSTGRES_USER=petru"
+      - "POSTGRES_PASSWORD=admin123"
+      - "POSTGRES_DB=ernie"
+    volumes:
+      - ./postgresql_local/database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

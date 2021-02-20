@@ -1,3 +1,4 @@
+# ErnieApp Testing project
 1. Dependencies
   - Django
   - Django REST Framework

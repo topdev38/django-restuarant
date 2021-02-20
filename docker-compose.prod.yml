@@ -14,13 +14,13 @@ services:
       POSTGRES_PORT: '5432'
       POSTGRES_DATABASE: 'ernie'
 
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn ernie_petru.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
     ports:
       - "8000:8000"
     env_file:
-      - ./.env.dev
+      - ./.env.prod
     links:
       - database
     depends_on:

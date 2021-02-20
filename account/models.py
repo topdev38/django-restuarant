@@ -39,6 +39,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
 class User(AbstractBaseUser):
     firstname = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)

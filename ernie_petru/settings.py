@@ -1,18 +1,27 @@
 
 from pathlib import Path
+import pydotenv
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env_path = BASE_DIR / '.env.dev'
+env = pydotenv.Environment(file_path=env_path)
 
+def _get_env(name, default):
+    '''
+    try to load env from pydotenv, if not available load from system ENV
+    otherwise use the default
+    '''
+    return env.get(name, os.environ.get(name, default))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'bs28n7+qwquc68xy0k2ccd0_0-m!h3m*!ri)56njohu#x1wdsj'
-
+SECRET_KEY = _get_env('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = _get_env('DEBUG', True)
 
 ALLOWED_HOSTS = []
 
@@ -72,11 +81,11 @@ WSGI_APPLICATION = 'ernie_petru.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ernie',
-        'USER': 'petru',
-        'PASSWORD': 'admin123',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'NAME': _get_env('DB_NAME', ''),
+        'USER': _get_env('DB_USER', ''),
+        'PASSWORD': _get_env('DB_PASSWORD', ''),
+        'HOST': _get_env('DB_HOST', ''),
+        'PORT': _get_env('DB_PORT', ''),
     }
 }
 

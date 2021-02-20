@@ -1,3 +1,4 @@
+# ErnieApp Testing project
 1. Dependencies
   - Django
   - Django REST Framework
@@ -36,6 +37,7 @@
     * docker run app python manage.py makemigrations
     * docker run app python manage.py createsuperuser
 5. Deployment
+  
   The project runs on docker/docker-compose so it is easy to deploy on any cloud platforms.
   On production mode, we can use .env.prod, docker-compose.prod.yml
   We will use gunicorn and nginx on production mode.

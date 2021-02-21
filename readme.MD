@@ -1,5 +1,5 @@
 # ErnieApp Testing project
-1. Dependencies
+## 1. Dependencies
   - Django
   - Django REST Framework
   - PyTest
@@ -8,7 +8,7 @@
   - Docker
   - Docker Compose
 
-2. Project structure
+## 2. Project structure
   - There are 4 Django apps
     * account
       Includes custom user model that allows user can input firstname, lastname, email, company, and password
@@ -26,18 +26,21 @@
       Customer can create only 1 order per day, per table
       Customer can edit order, but only if they created it to begin with
 
-3. Project Installation
+## 3. Project Installation
   - Prerequiresites 
     * Python
     * docker
     * docker-compose
-  - Installation
+  - How to run
     * docker compose build
     * docker up app
     * docker run app python manage.py makemigrations
     * docker run app python manage.py createsuperuser
-5. Deployment
-  
-  The project runs on docker/docker-compose so it is easy to deploy on any cloud platforms.
-  On production mode, we can use .env.prod, docker-compose.prod.yml
-  We will use gunicorn and nginx on production mode.
+## 4. Endpoints
+  - account
+    http://localhost:8000/users
+  - company
+    * Create new company
+      http://localhost:8000/company/new
+  - order
+    http://localhost:8000/order/order

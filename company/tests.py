@@ -1,4 +1,5 @@
 import pytest
+from rest_framework.reverse import reverse
 
 from .models import Company
 
@@ -18,6 +19,6 @@ def test_company_create():
 def test_company_creating(status_code, api_client):
     url = reverse('login')
     response = api_client.post(
-        url, data = default_data
+        url, data = default_data()
     )
     assert  response.status_code == status_code

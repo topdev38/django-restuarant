@@ -5,6 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .forms import UserAdminCreationForm, UserAdminChangeForm
 from .models import User
 
+
 class UserAdmin(BaseUserAdmin):
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
@@ -16,12 +17,11 @@ class UserAdmin(BaseUserAdmin):
     )
     list_display = ('email', 'firstname', 'lastname', 'company', 'admin')
     list_filter = ('admin',)
-    
+
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1')}
-        ),
+            'fields': ('email', 'password1')}),
     )
     search_fields = ('email',)
     ordering = ('email',)

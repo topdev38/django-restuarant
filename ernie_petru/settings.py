@@ -1,7 +1,7 @@
-
 from pathlib import Path
 import pydotenv
 import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,12 +9,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env_path = BASE_DIR / '.env.dev'
 env = pydotenv.Environment(file_path=env_path)
 
+
 def _get_env(name, default):
     '''
     try to load env from pydotenv, if not available load from system ENV
     otherwise use the default
     '''
     return env.get(name, os.environ.get(name, default))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 

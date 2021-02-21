@@ -1,7 +1,6 @@
 
-from rest_framework import status, permissions
+from rest_framework import permissions
 from rest_framework.generics import CreateAPIView
-from rest_framework.response import Response
 
 from .serializers import CompanySerializer
 from .models import Company
@@ -12,4 +11,3 @@ class CreateCompany(CreateAPIView):
 
     model = Company
     serializer_class = CompanySerializer
-

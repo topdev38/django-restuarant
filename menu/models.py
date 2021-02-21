@@ -6,11 +6,13 @@ LABEL_CHOICES = [
     ('BLACK', 'black'),
 ]
 
+
 class BaseMenu(models.Model):
     name = models.CharField(max_length=50)
     price = models.DecimalField(decimal_places=2, max_digits=5)
     # created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now_add=True)
+
 
 class MenuCategory(models.Model):
     name = models.CharField(max_length=50)
@@ -24,6 +26,7 @@ class MenuCategory(models.Model):
 class Food(BaseMenu):
     calorie = models.IntegerField()
     category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE)
+
 
 class Alcohol(BaseMenu):
     percetage = models.IntegerField()

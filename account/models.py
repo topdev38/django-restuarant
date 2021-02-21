@@ -49,18 +49,17 @@ class User(AbstractBaseUser):
         unique=True,
     )
     company = models.ForeignKey(
-        Company, 
+        Company,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
     )
-    # created_at = models.DateTimeField(auto_now_add=True)
-    # updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
-    
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
